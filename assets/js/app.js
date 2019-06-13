@@ -25,21 +25,21 @@
 
         .then(function (response){
             var parks = response.data; 
-            console.log (parks); 
+            console.log(parks); 
 
             for (var i = 0; i < parks.length; i++) { 
                 var currentPark =  parks[i]
                 var splitValue = currentPark.latLong.split(", ");
                 var lat = splitValue[0].split(":")[1]; 
                 var long = splitValue[1].split(":")[1];  
-                console.log (splitValue); 
                 nationalParks.push({
                     name:currentPark.fullName,
-                    latLong:currentPark.latLong, 
+                    type:currentPark.designation, 
                     lat, 
                     long, 
-
+                    url:currentPark.url, 
                 }); 
+                console.log(nationalParks); 
             }
 
         })   
