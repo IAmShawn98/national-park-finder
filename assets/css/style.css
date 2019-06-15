@@ -1,0 +1,47 @@
+/* Custom Brand Styles */
+
+/* Logo Size */
+
+.brandLogo {
+    position: relative;
+    font-size: 300%;
+}
+
+.navbar {
+    border: 1px solid !important;
+}
+
+#brand-title {
+    font-size: 250%;
+}
+
+#carouselContainer {
+    position: absolute;
+    margin-top: -93px;
+    margin-left: 25% !important;
+    border: 1px solid !important;
+}
+
+#parkPopulation {
+    position: absolute;
+    margin-top: -93px;
+    margin-left: 25% !important;
+    border: 1px solid !important;
+
+}
+
+.carousel-image {
+    position: relative;
+    width: 100%;
+    height: 800px;
+    background-position: 50% 50%;
+    filter:brightness(65%);
+}
+
+.form-group {
+    width: 38%;
+}
+table {
+    width: 100% !important;
+    height: 300% !important;
+}
