@@ -8,11 +8,14 @@
 
     // Vars for query URL 
     // api key
-    var apiKey = ""
+    var searchState = ""; 
     //query URL 
     var parkQueryURL = "http://developer.nps.gov/api/v1/parks?stateCode=PA&limit=10&api_key=TUzbrDxmdtDfjNLGofmsOXAmQ6WPMwukeORXBBHm"; 
-    
 
+    $("#btnSubmit").on("click", function () { 
+
+    })
+    
     parkFetcher(); 
 
     function parkFetcher () { 
@@ -59,20 +62,11 @@
                     $("<td>").text(nationalPark.designation),
                     $("<td>").text(nationalPark.url)
                 );
-             $(".searchResults > tbody").append(newRow)
+             $("#searchResults > tbody").append(newRow)
         })
     };
 
-    // function populateSearchResults () {
-    //     var newRow = $("<tr>").append (
-    //         $("<td>").text(this.nationalParks.name),
-    //         $("<td>").text(this.nationalParks.designation),
-    //         $("<td>").text(this.nationalParks.url), 
-    //         console.log ("accessing populate search results function"), 
-    //     ); 
-    
-    //     $(".searchResults > tbody").append(newRow); 
-    // }; 
+
 
 
     
