@@ -29,20 +29,36 @@
 
             for (var i = 0; i < parks.length; i++) { 
                 var currentPark =  parks[i]
-                var splitValue = currentPark.latLong.split(", ");
-                var lat = splitValue[0].split(":")[1]; 
-                var long = splitValue[1].split(":")[1];  
-                nationalParks.push({
-                    name:currentPark.fullName,
-                    type:currentPark.designation, 
-                    lat, 
-                    long, 
-                    url:currentPark.url, 
-                }); 
-                console.log(nationalParks); 
+                if (currentPark.latlong === undefined) {i++}
+                
+                else {
+                    var splitValue = currentPark.latLong.split(", ");
+                    var lat = splitValue[0].split(":")[1]; 
+                    var long = splitValue[1].split(":")[1];  
+                    nationalParks.push({
+                        name:currentPark.fullName,
+                        type:currentPark.designation, 
+                        lat, 
+                        long, 
+                        url:currentPark.url, 
+                    }); 
+                    console.log(nationalParks);
+                } 
             }
 
         })   
     }
+
+    // function populateSearchResults () {
+    //     var newRow = $("<tr>").append (
+    //         $("<td>").text(this.nationalParks.name),
+    //         $("<td>").text(this.nationalParks.designation),
+    //         $("<td>").text(this.nationalParks.url), 
+    //         console.log ("accessing populate search results function"), 
+    //     ); 
+    
+    //     $(".searchResults > tbody").append(newRow); 
+    // }; 
+
 
     
