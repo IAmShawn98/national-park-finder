@@ -47,8 +47,21 @@
                     console.log(nationalParks);
             }
 
-        })   
+        }) 
+        .then(populateSearchResults)
     }
+
+    function populateSearchResults () {
+        console.log(nationalParks,'nationalParks');
+        nationalParks.forEach(function(nationalPark){
+            var newRow = $("<tr>").append (
+                    $("<td>").text(nationalPark.name),
+                    $("<td>").text(nationalPark.designation),
+                    $("<td>").text(nationalPark.url)
+                );
+             $(".searchResults > tbody").append(newRow)
+        })
+    };
 
     // function populateSearchResults () {
     //     var newRow = $("<tr>").append (
