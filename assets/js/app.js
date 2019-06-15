@@ -17,7 +17,7 @@ $("#btnSubmit").on('click', function(e) {
     // api key
     var searchState = ""; 
     //query URL 
-    var parkQueryURL = "http://developer.nps.gov/api/v1/parks?stateCode=PA&limit=10&api_key=TUzbrDxmdtDfjNLGofmsOXAmQ6WPMwukeORXBBHm"; 
+    var parkQueryURL = "https://developer.nps.gov/api/v1/parks?stateCode=PA&limit=10&api_key=TUzbrDxmdtDfjNLGofmsOXAmQ6WPMwukeORXBBHm"; 
 
     $("#btnSubmit").on("click", function () { 
 
