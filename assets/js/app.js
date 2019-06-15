@@ -1,6 +1,8 @@
 
 $("#btnSubmit").on('click', function(e) {
     e.preventDefault();
+    console.log("trying to make a table"); 
+    populateSearchResults(); 
     document.getElementById("carouselContainer").style.display = "none";
     document.getElementById("parkPopulation").style.display = "block";
 })
@@ -15,11 +17,12 @@ $("#btnSubmit").on('click', function(e) {
 
     // Vars for query URL 
     // api key
-    var apiKey = ""
+    var searchState = ""; 
     //query URL 
-    var parkQueryURL = "http://developer.nps.gov/api/v1/parks?stateCode=PA&limit=10&api_key=TUzbrDxmdtDfjNLGofmsOXAmQ6WPMwukeORXBBHm"; 
-    
+    var parkQueryURL = "https://developer.nps.gov/api/v1/parks?stateCode=PA&limit=10&api_key=TUzbrDxmdtDfjNLGofmsOXAmQ6WPMwukeORXBBHm"; 
 
+
+    
     parkFetcher(); 
 
     function parkFetcher () { 
@@ -32,7 +35,7 @@ $("#btnSubmit").on('click', function(e) {
 
         .then(function (response){
             var parks = response.data; 
-            console.log(parks); 
+            // console.log(parks); 
 
             for (var i = 0; i < parks.length; i++) {
                 var currentPark =  parks[i]
@@ -55,31 +58,22 @@ $("#btnSubmit").on('click', function(e) {
             }
 
         }) 
-        .then(populateSearchResults)
+        // .then(populateSearchResults)
     }
 
     function populateSearchResults () {
-        console.log(nationalParks,'nationalParks');
+        // console.log(nationalParks);
         nationalParks.forEach(function(nationalPark){
             var newRow = $("<tr>").append (
                     $("<td>").text(nationalPark.name),
                     $("<td>").text(nationalPark.designation),
-                    $("<td>").text(nationalPark.url)
+                    $("<td>").text(nationalPark.url) 
                 );
-             $(".searchResults > tbody").append(newRow)
+             $("#searchResults > tbody").append(newRow)
         })
     };
 
-    // function populateSearchResults () {
-    //     var newRow = $("<tr>").append (
-    //         $("<td>").text(this.nationalParks.name),
-    //         $("<td>").text(this.nationalParks.designation),
-    //         $("<td>").text(this.nationalParks.url), 
-    //         console.log ("accessing populate search results function"), 
-    //     ); 
-    
-    //     $(".searchResults > tbody").append(newRow); 
-    // }; 
+
 
 
     
