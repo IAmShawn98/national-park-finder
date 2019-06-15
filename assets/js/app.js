@@ -27,23 +27,24 @@
             var parks = response.data; 
             console.log(parks); 
 
-            for (var i = 0; i < parks.length; i++) { 
+            for (var i = 0; i < parks.length; i++) {
                 var currentPark =  parks[i]
-                if (currentPark.latlong === undefined) {i++}
-                
-                else {
+                console.log('currentPark',currentPark.latLong)
+                if(currentPark.latLong === ''){
+                    i++;
+                }else {
                     var splitValue = currentPark.latLong.split(", ");
-                    var lat = splitValue[0].split(":")[1]; 
-                    var long = splitValue[1].split(":")[1];  
+                    var lat = splitValue[0].split(":")[1];
+                    var long = splitValue[1].split(":")[1];
                     nationalParks.push({
                         name:currentPark.fullName,
-                        type:currentPark.designation, 
-                        lat, 
-                        long, 
-                        url:currentPark.url, 
-                    }); 
+                        type:currentPark.designation,
+                        lat,
+                        long,
+                        url:currentPark.url,
+                    });
+                }
                     console.log(nationalParks);
-                } 
             }
 
         })   
