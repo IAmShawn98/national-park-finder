@@ -16,7 +16,8 @@
 
     <!-- Custom Style Sheet -->
     <link rel="stylesheet" href="assets/css/style.css">
-
+    <link rel="stylesheet" href="googlestyle.css">
+    
     <!-- Font Awesome CDN -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.css" />
 
@@ -169,6 +170,15 @@
         </table>
     </div>
     
+    <div id="map"></div>
+    <div id="infowindow-content">
+      <img src="" width="16" height="16" id="place-icon">
+      <span id="place-name"  class="title"></span><br>
+      <span id="place-address"></span>
+    </div>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyATCJLFeqOorb0HpzQBKU6R7-7tIDEu8pg&callback=initMap"
+    type="text/javascript"></script>
+
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
