@@ -82,7 +82,7 @@ function populateSearchResults() {
         // Create rows.
         var newRow = $("<tr>").append(
             $("<td>").text(nationalPark.name),
-            $("<td>").text(nationalPark.designation),
+            $("<td>").text(nationalPark.type),
             $("<td>").text(nationalPark.url)
         );
         // Append new rows to the table.
