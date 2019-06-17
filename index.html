@@ -19,23 +19,18 @@
 
     <!-- Custom Style Sheet -->
     <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="googlestyle.css">
-    
+
+    <!-- Google Map Style (WORK IN PROGRESS) -->
+    <!-- <link rel="stylesheet" href="assets/css/googlestyle.css"> -->
+
     <!-- Font Awesome CDN -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.css" />
 
     <!-- Fave Icon -->
     <link rel="shortcut icon" type="image/x-icon" href="assets/images/fave-icons/fave.png" />
 
-
     <!-- Document Title -->
     <title>National Parks Finder</title>
-
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    
 </head>
 
 <body class="animated fadeIn">
@@ -133,8 +128,7 @@
             </a>
         </div>
     </div>
-
-    <!-- Site Carousel Image Slider -->
+    <!-- Site Park Datatable -->
     <div style="display: none;" id="parkPopulation" class="col-md-8 border bg-light p-3 float-left animated fadeIn">
         <!-- Site Park Search Results -->
         <h1>Search Results</h1>
@@ -151,18 +145,22 @@
             </thead>
             <!-- Site Park Data Population (This is where all the API data will be populated into) -->
             <tbody class="animated fadeInDown">
-                
+
             </tbody>
         </table>
     </div>
-    <div id="map"></div>
-    <div id="infowindow-content">
-      <img src="" width="16" height="16" id="place-icon">
-      <span id="place-name"  class="title"></span><br>
-      <span id="place-address"></span>
-    </div>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyATCJLFeqOorb0HpzQBKU6R7-7tIDEu8pg&callback=initMap"
-    type="text/javascript"></script>
+
+    <!-- Map Content (WORK IN PROGRESS) -->
+    <!-- <div class="col-md-12 border bg-light float-right mt-5"> -->
+    <!-- Map Population -->
+    <!-- <div id="map"></div> -->
+    <!-- Map Info Content -->
+    <!-- <div id="infowindow-content"> -->
+    <!-- <img src="" width="16" height="16" id="place-icon"> -->
+    <!-- <span id="place-name" class="title"></span><br> -->
+    <!-- <span id="place-address"></span> -->
+    <!-- </div> -->
+    <!-- </div> -->
 
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
@@ -179,13 +177,19 @@
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
 
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-
+    <!-- Ajax JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 
     <!-- Core App JS -->
     <script src="assets/js/app.js"></script>
 
-    
+    <!-- Map Core JS (WORK IN PROGRESS) -->
+    <!-- <script src="assets/js/GeopointGoogle.js"></script> -->
+
+    <!-- Map Query -->
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyATCJLFeqOorb0HpzQBKU6R7-7tIDEu8pg&callback=initMap"
+        type="text/javascript"></script>
 </body>
 
 </html>
