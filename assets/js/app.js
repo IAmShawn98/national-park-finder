@@ -65,6 +65,7 @@ function parkFetcher() {
                         lat,
                         long,
                         url: currentPark.url,
+                        parkCode:currentPark.parkCode
                     });
                 }
                 // Log Push.
@@ -83,7 +84,9 @@ function populateSearchResults() {
         var newRow = $("<tr>").append(
             $("<td>").text(nationalPark.name),
             $("<td>").text(nationalPark.type),
-            $("<td>").text(nationalPark.url)
+            $("<td>").text(nationalPark.url), 
+            $("<td>").html('<input type="button" value="Add Fav" id="parkSelect-'+nationalPark.parkCode+'"/>'),
+            $("<td>").html('<input type="button" value="More Details" id="parkDetails-'+nationalPark.parkCode+'"/>')
         );
         // Append new rows to the table.
         $("#searchResults > tbody").append(newRow)
