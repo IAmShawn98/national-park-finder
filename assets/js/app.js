@@ -59,6 +59,7 @@ function parkFetcher() {
     var parkQueryURL = "https://developer.nps.gov/api/v1/parks?stateCode=" + searchState + "&limit=10&api_key=TUzbrDxmdtDfjNLGofmsOXAmQ6WPMwukeORXBBHm";
     console.log ("search state is " + searchState); 
     console.log(parkQueryURL); 
+    nationalParks = []; 
 
     // Our ajax request.
     $.ajax({
@@ -93,7 +94,7 @@ function parkFetcher() {
                         url: currentPark.url,
                         parkCode:currentPark.parkCode, 
                         description:currentPark.desctription, 
-                        
+
                     });
                 }
                 // Log Push.
