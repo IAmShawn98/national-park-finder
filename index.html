@@ -7,6 +7,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-app.js"></script>
+
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -67,7 +70,7 @@
                     </p>
                     <!-- Site Search Park Name -->
                     <label class="font-weight-bold text-info">Park Name:</label>
-                    <input type="text" class="form-control" placeholder="Example: Yellowstone National Park">
+                    <input type="text" class="form-control" placeholder="Example: Yellowstone National Park" id="searchText">
                     <small class="form-text text-muted">Type the name of any park you desire to visit.</small>
                 </div>
                 <!-- Site Submit -->

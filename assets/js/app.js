@@ -1,3 +1,16 @@
+// Your web app's Firebase configuration
+var firebaseConfig = {
+    apiKey: "AIzaSyDctDVmKqP-wwaw034DRpQ3HLAgKT-RSaM",
+    authDomain: "national-parks-finder-ff4e2.firebaseapp.com",
+    databaseURL: "https://national-parks-finder-ff4e2.firebaseio.com",
+    projectId: "national-parks-finder-ff4e2",
+    storageBucket: "national-parks-finder-ff4e2.appspot.com",
+    messagingSenderId: "468902482053",
+    appId: "1:468902482053:web:aaedc7ae93fef45a"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+
 // When the user clicks on the submit button, populate park results to the datatable 'parkPopulation'.
 $("#btnSubmit").on('click', function (e) {
     // Prevent Page Reloading.
@@ -5,12 +18,18 @@ $("#btnSubmit").on('click', function (e) {
     // Check to see if we're hitting our click.
     console.log("trying to make a table");
     // Execute API response data population.
-    populateSearchResults();
+    populateSearchResults(); 
+    // parkFetcher();
+
+    // .then(function () {
+    //     populateSearchResults(); 
+    // })
+    
     // Hide home page carousel.
     document.getElementById("carouselContainer").style.display = "none";
     // Show Park Population Table.
     document.getElementById("parkPopulation").style.display = "block";
-})
+}); 
 
 // This array contains the names of our National Parks.
 var nationalParks = [
@@ -22,10 +41,11 @@ var zipcode = "";
 
 // Here we define the variables for our queryURL.
 
-// api key
-var searchState = "";
-//query URL 
-var parkQueryURL = "https://developer.nps.gov/api/v1/parks?stateCode=PA&limit=10&api_key=TUzbrDxmdtDfjNLGofmsOXAmQ6WPMwukeORXBBHm";
+var searchState = $("#searchState").val();
+// query URL
+var hardCodedURL = "https://developer.nps.gov/api/v1/parks?stateCode=PA&limit=10&api_key=TUzbrDxmdtDfjNLGofmsOXAmQ6WPMwukeORXBBHm";
+var parkQueryURL = "https://developer.nps.gov/api/v1/parks?stateCode=" + searchState + "&limit=10&api_key=TUzbrDxmdtDfjNLGofmsOXAmQ6WPMwukeORXBBHm";
+console.log ("search state is " + searchState); 
 
 // This calls our function that fetches the API data from our ajax response object.
 parkFetcher();
@@ -34,10 +54,11 @@ parkFetcher();
 function parkFetcher() {
     // Check to see if we're hitting this function.
     console.log("parkFetcher");
+    
 
     // Our ajax request.
     $.ajax({
-        url: parkQueryURL,
+        url: hardCodedURL,
         method: "GET"
     })
 
