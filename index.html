@@ -65,11 +65,52 @@
                     </p>
                     <!-- Site Search Park Name -->
                     <label class="font-weight-bold text-info">Park Name:</label>
-                    <input type="text" class="form-control" placeholder="Example: Yellowstone National Park" id="searchText">
+                    <input type="text" class="form-control" placeholder="Example: Yellowstone National Park"
+                        id="searchText">
                     <small class="form-text text-muted">Type the name of any park you desire to visit.</small>
                 </div>
-                <!-- Site Submit -->
-                <button type="submit" id="btnSubmit" class="btn btn-success">Search Park</button>
+                <!-- Site Submit Button & Park Favorites -->
+                <div class="row">
+                    <div class="col-md-5">
+                        <!-- Site Submit Button -->
+                        <button type="submit" id="btnSubmit" class="btn btn-success">Search Park</button>
+                        <!-- Site Favorites (HR LINE) -->
+                        <div class="container" id="favorites">
+                            <!-- Site User Favorites Title -->
+                            <span class="hr-title text-success">
+                                Favorite Parks
+                            </span>
+                        </div>
+                        <!-- Site Favorites body -->
+                        <div class="col-md-12 mt-4 text-center">
+                            <!-- Site Favorites Table -->
+                            <table class="table table-bordered">
+                                <!-- Data is populated here in the 'tbody'. -->
+                                <tbody id="favoritesPopulation">
+                                    <!-- Mockup Data Population (Remove Lines '89 - 107' For Production) -->
+                                    <tr>
+                                        <td>1.) <a href="#">Bryce Canyon National Park</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td>2.) <a href="#">Bryce Canyon National Park</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td>3.) <a href="#">Bryce Canyon National Park</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td>4.) <a href="#">Bryce Canyon National Park</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td>5.) <a href="#">Bryce Canyon National Park</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td>6.) <a href="#">Bryce Canyon National Park</a></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
             </div>
         </form>
     </div>
@@ -136,11 +177,13 @@
             <!-- Site Table Head -->
             <thead>
                 <tr>
+                    <!-- Basic Park Information. -->
                     <th scope="col">Park Name</th>
                     <th scope="col">Type</th>
                     <th scope="col">URL</th>
-                    <th scope="col">Fav</th>
-                    <th scope="col">More Deets</th>
+                    <!-- Park User Actions (Favorites & Details Buttons) -->
+                    <th scope="col"></th>
+                    <th scope="col"></th>
                 </tr>
             </thead>
             <!-- Site Park Data Population (This is where all the API data will be populated into) -->

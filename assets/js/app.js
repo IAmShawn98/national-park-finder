@@ -110,8 +110,11 @@ function populateSearchResults() {
             $("<td>").text(nationalPark.name),
             $("<td>").text(nationalPark.type),
             $("<td>").text(nationalPark.url), 
-            $("<td>").html('<input type="button" value="Add Fav" id="parkSelect-'+nationalPark.parkCode+'"/>'),
-            $("<td>").html('<input type="button" value="More Details" id="parkDetails-'+nationalPark.parkCode+'"/>')
+            // User Actions:
+            // Favorites button.
+            $("<td>").html('<i class="btn btn-success fa fa-star p-1 ml-5 text-white" aria-hidden="true"><input type="button" class="btn btn-success p-0" value=" Favorite This" id="parkSelect-'+nationalPark.parkCode+'"/>'),
+            // More Details button.
+            $("<td>").html('<i class="btn btn-info fa fa-eye p-1 mr-5 text-white" aria-hidden="true"><input type="button" class="btn btn-info p-0" value=" More Details" id="parkDetails-'+nationalPark.parkCode+'"/>')
         );
         // Append new rows to the table.
         $("#searchResults > tbody").append(newRow)
