@@ -91,7 +91,9 @@ function parkFetcher() {
                         lat,
                         long,
                         url: currentPark.url,
-                        parkCode:currentPark.parkCode
+                        parkCode:currentPark.parkCode, 
+                        description:currentPark.desctription, 
+                        
                     });
                 }
                 // Log Push.
@@ -99,7 +101,7 @@ function parkFetcher() {
             }
 
         })
-    .then(populateSearchResults)
+    .then(populateSearchResults); 
 }
 
 // Populate our datatable with our park repsonse data.
