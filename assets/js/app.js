@@ -93,8 +93,8 @@ function parkFetcher() {
                         long,
                         url: currentPark.url,
                         parkCode:currentPark.parkCode, 
-                        description:currentPark.desctription, 
-
+                        description:currentPark.description,
+                        hours: standardHours, 
                     });
                 }
                 // Log Push.
@@ -117,7 +117,7 @@ function populateSearchResults() {
             $("<td>").text(nationalPark.url), 
             // User Actions:
             // Favorites button.
-            $("<td>").html('<i class="btn btn-success fa fa-star p-1 ml-5 text-white" aria-hidden="true"><input type="button" class="btn btn-success p-0" value=" Favorite This" id="parkSelect-'+nationalPark.parkCode+'"/>'),
+            $("<td>").html('<i class="btn btn-success fa fa-star p-1 ml-5 text-white parkSelect" aria-hidden="true"><input type="button" class="btn btn-success p-0" value=" Favorite This" attr = "data-name" '+ nationalPark.parkCode +' " id = "parkSelect"/>'),
             // More Details button.
             $("<td>").html('<i class="btn btn-info fa fa-eye p-1 mr-5 text-white" aria-hidden="true"><input type="button" class="btn btn-info p-0" value=" More Details" id="parkDetails-'+nationalPark.parkCode+'"/>')
         );
@@ -126,8 +126,16 @@ function populateSearchResults() {
     })
 };
 
-// Save a park as a favorite 
-// var db = firebase.database(); 
-// var favoritePark = db.ref("/favorites");
+$(document).on("click", "#parkSelect", function () {
+    // var attr = element.getAttribute(parkCode);
+    // console.log(attr);  
+    console.log("click on park")
+    // retrieve the code 
+    // call the array to find the code  
+    // display the details of the park 
+    // save the name of the park to FB 
 
-// $("#parkSelect")
+})
+
+// listener for the favs section 
+
