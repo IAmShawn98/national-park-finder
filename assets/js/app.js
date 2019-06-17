@@ -18,8 +18,9 @@ $("#btnSubmit").on('click', function (e) {
     // Check to see if we're hitting our click.
     console.log("trying to make a table");
     // Execute API response data population.
-    populateSearchResults(); 
-    // parkFetcher();
+    parkFetcher(); 
+    // populateSearchResults(); 
+    
 
     // .then(function () {
     //     populateSearchResults(); 
@@ -41,14 +42,15 @@ var zipcode = "";
 
 // Here we define the variables for our queryURL.
 
-var searchState = $("#searchState").val();
+// var searchState = $("#searchText").val();
+var searchState = document.getElementById("searchText").value; 
 // query URL
-var hardCodedURL = "https://developer.nps.gov/api/v1/parks?stateCode=PA&limit=10&api_key=TUzbrDxmdtDfjNLGofmsOXAmQ6WPMwukeORXBBHm";
+// var hardCodedURL = "https://developer.nps.gov/api/v1/parks?stateCode=PA&limit=10&api_key=TUzbrDxmdtDfjNLGofmsOXAmQ6WPMwukeORXBBHm";
 var parkQueryURL = "https://developer.nps.gov/api/v1/parks?stateCode=" + searchState + "&limit=10&api_key=TUzbrDxmdtDfjNLGofmsOXAmQ6WPMwukeORXBBHm";
 console.log ("search state is " + searchState); 
 
 // This calls our function that fetches the API data from our ajax response object.
-parkFetcher();
+// parkFetcher();
 
 // Ajax API Park Fetcher.
 function parkFetcher() {
@@ -58,14 +60,15 @@ function parkFetcher() {
 
     // Our ajax request.
     $.ajax({
-        url: hardCodedURL,
+        url: parkQueryURL,
         method: "GET"
     })
 
         // Get our response data.
         .then(function (response) {
             var parks = response.data;
-            // console.log(parks); 
+            // console.log(parks);
+ 
 
             // Loop through our National Parks Array.
             for (var i = 0; i < parks.length; i++) {
@@ -94,12 +97,13 @@ function parkFetcher() {
             }
 
         })
-    // .then(populateSearchResults)
+    .then(populateSearchResults)
 }
 
 // Populate our datatable with our park repsonse data.
 function populateSearchResults() {
     // console.log(nationalParks);
+    $("#searchResults > tbody").empty(); 
     nationalParks.forEach(function (nationalPark) {
         // Create rows.
         var newRow = $("<tr>").append(
@@ -113,3 +117,9 @@ function populateSearchResults() {
         $("#searchResults > tbody").append(newRow)
     })
 };
+
+// Save a park as a favorite 
+// var db = firebase.database(); 
+// var favoritePark = db.ref("/favorites");
+
+// $("#parkSelect")
