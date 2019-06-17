@@ -42,12 +42,7 @@ var zipcode = "";
 
 // Here we define the variables for our queryURL.
 
-// var searchState = $("#searchText").val();
-var searchState = document.getElementById("searchText").value; 
-// query URL
-// var hardCodedURL = "https://developer.nps.gov/api/v1/parks?stateCode=PA&limit=10&api_key=TUzbrDxmdtDfjNLGofmsOXAmQ6WPMwukeORXBBHm";
-var parkQueryURL = "https://developer.nps.gov/api/v1/parks?stateCode=" + searchState + "&limit=10&api_key=TUzbrDxmdtDfjNLGofmsOXAmQ6WPMwukeORXBBHm";
-console.log ("search state is " + searchState); 
+
 
 // This calls our function that fetches the API data from our ajax response object.
 // parkFetcher();
@@ -57,6 +52,13 @@ function parkFetcher() {
     // Check to see if we're hitting this function.
     console.log("parkFetcher");
     
+    // var searchState = $("#searchText").val();
+    var searchState = document.getElementById("searchText").value; 
+    // query URL
+    var hardCodedURL = "https://developer.nps.gov/api/v1/parks?stateCode=PA&limit=10&api_key=TUzbrDxmdtDfjNLGofmsOXAmQ6WPMwukeORXBBHm";
+    var parkQueryURL = "https://developer.nps.gov/api/v1/parks?stateCode=" + searchState + "&limit=10&api_key=TUzbrDxmdtDfjNLGofmsOXAmQ6WPMwukeORXBBHm";
+    console.log ("search state is " + searchState); 
+    console.log(parkQueryURL); 
 
     // Our ajax request.
     $.ajax({
