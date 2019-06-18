@@ -1,3 +1,4 @@
+    
 // Your web app's Firebase configuration
 var firebaseConfig = {
     apiKey: "AIzaSyDctDVmKqP-wwaw034DRpQ3HLAgKT-RSaM",
@@ -10,7 +11,7 @@ var firebaseConfig = {
   };
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
-
+  var database = firebase.database(); 
 // When the user clicks on the submit button, populate park results to the datatable 'parkPopulation'.
 $("#btnSubmit").on('click', function (e) {
     // Prevent Page Reloading.
@@ -142,16 +143,19 @@ $(document).on("click", ".favPark", function (e) {
         var favRow = $("<tr>").append (
             $("<td>").text(nationalParks[f].name), 
         )
-        console.log(nationalParks[f].name);
+        console.log("this is the name we want", nationalParks[f].name);
         $("#favoritesPopulation").append(favRow); 
+        
+        database.ref().push({parkname:nationalParks[f].name});
     }
 }
 
 })
-
+database.ref().on("child_added", function(snapshot){
+    console.log("things from Database", snapshot.val())
+})
 $(document).on("click", ".moreButton", function (e) {
-    // var attr = element.getAttribute(parkCode);
-    // console.log(attr);  
+
     console.log("click on more details");
     console.log(e.target.id); 
     // retrieve the code 
@@ -171,10 +175,6 @@ $(document).on("click", ".moreButton", function (e) {
         $("#parkDescription").html(nationalParks[f].description);     
         console.log(nationalParks[f].name);
     }
-}
-
-})
-
+}})
 
 // listener for the favs section 
-
