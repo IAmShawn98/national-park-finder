@@ -1,3 +1,4 @@
+    
 // Your web app's Firebase configuration
 var firebaseConfig = {
     apiKey: "AIzaSyDctDVmKqP-wwaw034DRpQ3HLAgKT-RSaM",
@@ -10,7 +11,7 @@ var firebaseConfig = {
   };
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
-
+  var database = firebase.database(); 
 // When the user clicks on the submit button, populate park results to the datatable 'parkPopulation'.
 $("#btnSubmit").on('click', function (e) {
     // Prevent Page Reloading.
@@ -42,12 +43,7 @@ var zipcode = "";
 
 // Here we define the variables for our queryURL.
 
-// var searchState = $("#searchText").val();
-var searchState = document.getElementById("searchText").value; 
-// query URL
-// var hardCodedURL = "https://developer.nps.gov/api/v1/parks?stateCode=PA&limit=10&api_key=TUzbrDxmdtDfjNLGofmsOXAmQ6WPMwukeORXBBHm";
-var parkQueryURL = "https://developer.nps.gov/api/v1/parks?stateCode=" + searchState + "&limit=10&api_key=TUzbrDxmdtDfjNLGofmsOXAmQ6WPMwukeORXBBHm";
-console.log ("search state is " + searchState); 
+
 
 // This calls our function that fetches the API data from our ajax response object.
 // parkFetcher();
@@ -57,6 +53,14 @@ function parkFetcher() {
     // Check to see if we're hitting this function.
     console.log("parkFetcher");
     
+    // var searchState = $("#searchText").val();
+    var searchState = document.getElementById("searchText").value; 
+    // query URL
+    var hardCodedURL = "https://developer.nps.gov/api/v1/parks?stateCode=PA&limit=10&api_key=TUzbrDxmdtDfjNLGofmsOXAmQ6WPMwukeORXBBHm";
+    var parkQueryURL = "https://developer.nps.gov/api/v1/parks?stateCode=" + searchState + "&limit=10&api_key=TUzbrDxmdtDfjNLGofmsOXAmQ6WPMwukeORXBBHm";
+    console.log ("search state is " + searchState); 
+    console.log(parkQueryURL); 
+    nationalParks = []; 
 
     // Our ajax request.
     $.ajax({
@@ -89,7 +93,9 @@ function parkFetcher() {
                         lat,
                         long,
                         url: currentPark.url,
-                        parkCode:currentPark.parkCode
+                        parkCode:currentPark.parkCode, 
+                        description:currentPark.description,
+                        // hours: standardHours, 
                     });
                 }
                 // Log Push.
@@ -97,7 +103,7 @@ function parkFetcher() {
             }
 
         })
-    .then(populateSearchResults)
+    .then(populateSearchResults); 
 }
 
 // Populate our datatable with our park repsonse data.
@@ -110,16 +116,79 @@ function populateSearchResults() {
             $("<td>").text(nationalPark.name),
             $("<td>").text(nationalPark.type),
             $("<td>").text(nationalPark.url), 
-            $("<td>").html('<input type="button" value="Add Fav" id="parkSelect-'+nationalPark.parkCode+'"/>'),
-            $("<td>").html('<input type="button" value="More Details" id="parkDetails-'+nationalPark.parkCode+'"/>')
+            // User Actions:
+            // Favorites button.
+            $("<td>").html('<i class="btn btn-success fa fa-star p-1 ml-5 text-white parkSelect" aria-hidden="true"><input type="button" class="btn favPark btn-success p-0" value=" Favorite This" id="parkFavs-'+nationalPark.parkCode+'"/>'),
+            // More Details button.
+            $("<td>").html('<i class="btn btn-info fa fa-eye p-1 mr-5 text-white" aria-hidden="true"><input type="button" class="btn moreButton btn-info p-0" value=" More Details" id="parkDetails-'+nationalPark.parkCode+'"/>')
         );
         // Append new rows to the table.
         $("#searchResults > tbody").append(newRow)
     })
 };
 
-// Save a park as a favorite 
-// var db = firebase.database(); 
-// var favoritePark = db.ref("/favorites");
+$(document).on("click", ".favPark", function (e) {
+    
+    console.log("click on fav park");
+    console.log(e.target.id); 
+    // retrieve the code 
+    var splitValue = e.target.id.split("-"); 
+    console.log(splitValue[1], " is split 1"); 
+    console.log(nationalParks,  "is parkcode"); 
 
-// $("#parkSelect")
+    for (var f = 0; f < nationalParks.length; f++) {
+    if (splitValue[1] === nationalParks[f].parkCode) {
+        console.log("are you finding a park");
+        var favRow = $("<tr>").append (
+            $("<td>").text(nationalParks[f].name), 
+        )
+        console.log(nationalParks[f].name);
+        $("#favoritesPopulation").append(favRow); 
+        database.ref().push({nationalParks});
+   
+    }
+}
+
+})
+
+$(document).on("click", ".moreButton", function (e) {
+    // var attr = element.getAttribute(parkCode);
+    // console.log(attr);  
+    console.log("click on more details");
+    console.log(e.target.id); 
+    // retrieve the code 
+    var splitValue = e.target.id.split("-"); 
+    console.log(splitValue[1], " is split 1"); 
+    console.log(nationalParks,  "is parkcode"); 
+
+    for (var f = 0; f < nationalParks.length; f++) {
+    if (splitValue[1] === nationalParks[f].parkCode) {
+        console.log("are you looking for more details");
+        console.log($("#parkDetails"));
+        $("#parkDetails").modal("show");
+        $("#parkName2").html(nationalParks[f].name);
+        $("#parkType").html(nationalParks[f].type);
+        console.log(nationalParks[f].type); 
+        $("#parkURL").html(nationalParks[f].url);
+        $("#parkDescription").html(nationalParks[f].description);     
+        console.log(nationalParks[f].name);
+    }
+}})
+
+
+
+
+// $(".favPark").on("click" , function () {
+// console.log("favoriteParks");
+//  var favoritePark = database.ref(favoritePark).push({
+//         name: currentPark.fullName,
+//         type: currentPark.designation,
+//         lat,
+//         long,
+//         url: currentPark.url,
+//         parkCode: currentPark.parkCode, 
+//         description: currentPark.description,
+//   });
+//   
+//   ref.child("favorites").push(NewFavoritePark);
+// })

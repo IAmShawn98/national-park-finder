@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Firebase -->
-    <script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.1.1/firebase.js"></script>
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -64,12 +64,36 @@
                         adventure that we're sure you'll cherish.
                     </p>
                     <!-- Site Search Park Name -->
-                    <label class="font-weight-bold text-info">Park Name:</label>
-                    <input type="text" class="form-control" placeholder="Example: Yellowstone National Park" id="searchText">
-                    <small class="form-text text-muted">Type the name of any park you desire to visit.</small>
+                    <label class="font-weight-bold text-info">State:</label>
+                    <input type="text" class="form-control" placeholder="Example: PA"
+                        id="searchText">
+                    <small class="form-text text-muted">Type a state to find the top 10 parks.</small>
                 </div>
-                <!-- Site Submit -->
-                <button type="submit" id="btnSubmit" class="btn btn-success">Search Park</button>
+                <!-- Site Submit Button & Park Favorites -->
+                <div class="row">
+                    <div class="col-md-5">
+                        <!-- Site Submit Button -->
+                        <button type="submit" id="btnSubmit" class="btn btn-success">Search Park</button>
+                        <!-- Site Favorites (HR LINE) -->
+                        <div class="container" id="favorites">
+                            <!-- Site User Favorites Title -->
+                            <span class="hr-title text-success">
+                                Favorite Parks
+                            </span>
+                        </div>
+                        <!-- Site Favorites body -->
+                        <div class="col-md-12 mt-4 text-center">
+                            <!-- Site Favorites Table -->
+                            <table class="table table-bordered favtable">
+                                <!-- Data is populated here in the 'tbody'. -->
+                                <tbody id="favoritesPopulation">
+                                    <!-- Mockup Data Population (Remove Lines '89 - 107' For Production) -->
+                                    
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
             </div>
         </form>
     </div>
@@ -136,11 +160,13 @@
             <!-- Site Table Head -->
             <thead>
                 <tr>
+                    <!-- Basic Park Information. -->
                     <th scope="col">Park Name</th>
                     <th scope="col">Type</th>
                     <th scope="col">URL</th>
-                    <th scope="col">Fav</th>
-                    <th scope="col">More Deets</th>
+                    <!-- Park User Actions (Favorites & Details Buttons) -->
+                    <th scope="col"></th>
+                    <th scope="col"></th>
                 </tr>
             </thead>
             <!-- Site Park Data Population (This is where all the API data will be populated into) -->
@@ -162,10 +188,64 @@
     <!-- </div> -->
     <!-- </div> -->
 
+
+    <!-- Site More Details Container -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="modal fade" id="parkDetails" tabindex="-1" role="dialog" aria-hidden="true">
+                    <!-- Site Modal Contain Content Center -->
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <!-- Site Modal Head & Body Container-->
+                        <div class="modal-content">
+                            <!-- Site Modal Header -->
+                            <div class="modal-header">
+                                <!-- Site Modal Title -->
+                                <h5 class="modal-title text-info" >
+                                    <!-- Site Modal '!' Fa Icon -->
+                                    <i class="fa fa-info-circle" aria-hidden="true"></i>
+                                    <!-- Site Modal Title Name -->
+                                    Park Details | <label id="parkName">'Bryce Canyon National Park'</label>
+                                </h5>
+                                <!-- Site Modal 'X' Close Button -->
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                    <!-- This '&times;' is unicode for an 'X' icon -->
+                                </button>
+                            </div>
+                            <!-- Site Modal Body Park Data -->
+                            <div class="modal-body text-center">
+                                <h4>Park: <div class="font-weight-bold" id="parkName2">..</div></h4>
+                                <h4>Type: <div class="font-weight-bold" id="parkType">..</div></h4>
+                                <h4>URL: <div class="font-weight-bold" id="parkURL">..</div></h4>
+                                <h4>Description: <div class="font-weight-bold" id="parkDescription">..</div></h4>
+                            </div>
+                            <!-- Site Modal Actions -->
+                            <div class="modal-footer">
+                                <!-- Site Modal Button 'Close' -->
+                                <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+
+
+
+
+
+
+
+
     <!-- jQuery -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+    crossorigin="anonymous"></script>
 
     <!-- Popper JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
@@ -178,7 +258,7 @@
         crossorigin="anonymous"></script>
 
     <!-- Ajax JS -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script> -->
 
     <!-- Core App JS -->
     <script src="assets/js/app.js"></script>
