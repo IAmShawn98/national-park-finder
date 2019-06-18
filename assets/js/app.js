@@ -142,18 +142,19 @@ $(document).on("click", ".favPark", function (e) {
         var favRow = $("<tr>").append (
             $("<td>").text(nationalParks[f].name), 
         )
-        console.log(nationalParks[f].name);
+        console.log("this is the name we want", nationalParks[f].name);
         $("#favoritesPopulation").append(favRow); 
-        database.ref().push({nationalParks});
-   
+        
+        database.ref().push({parkname:nationalParks[f].name});
     }
 }
 
 })
-
+database.ref().on("child_added", function(snapshot){
+    console.log("things from Database", snapshot.val())
+})
 $(document).on("click", ".moreButton", function (e) {
-    // var attr = element.getAttribute(parkCode);
-    // console.log(attr);  
+
     console.log("click on more details");
     console.log(e.target.id); 
     // retrieve the code 
@@ -174,21 +175,3 @@ $(document).on("click", ".moreButton", function (e) {
         console.log(nationalParks[f].name);
     }
 }})
-
-
-
-
-// $(".favPark").on("click" , function () {
-// console.log("favoriteParks");
-//  var favoritePark = database.ref(favoritePark).push({
-//         name: currentPark.fullName,
-//         type: currentPark.designation,
-//         lat,
-//         long,
-//         url: currentPark.url,
-//         parkCode: currentPark.parkCode, 
-//         description: currentPark.description,
-//   });
-//   
-//   ref.child("favorites").push(NewFavoritePark);
-// })
