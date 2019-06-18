@@ -128,7 +128,8 @@ function populateSearchResults() {
 };
 
 $(document).on("click", ".favPark", function (e) {
-    
+    // var attr = element.getAttribute(parkCode);
+    // console.log(attr);  
     console.log("click on fav park");
     console.log(e.target.id); 
     // retrieve the code 
@@ -175,3 +176,5 @@ $(document).on("click", ".moreButton", function (e) {
         console.log(nationalParks[f].name);
     }
 }})
+
+// listener for the favs section 
