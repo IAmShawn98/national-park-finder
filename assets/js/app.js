@@ -93,7 +93,7 @@ function parkFetcher() {
                         long,
                         url: currentPark.url,
                         parkCode:currentPark.parkCode, 
-                        // description:currentPark.description,
+                        description:currentPark.description,
                         // hours: standardHours, 
                     });
                 }
@@ -164,7 +164,11 @@ $(document).on("click", ".moreButton", function (e) {
         console.log("are you looking for more details");
         console.log($("#parkDetails"));
         $("#parkDetails").modal("show");
-        // $("#parkName").append(nationalParks[f].name);  
+        $("#parkName2").html(nationalParks[f].name);
+        $("#parkType").html(nationalParks[f].type);
+        console.log(nationalParks[f].type); 
+        $("#parkURL").html(nationalParks[f].url);
+        $("#parkDescription").html(nationalParks[f].description);     
         console.log(nationalParks[f].name);
     }
 }
