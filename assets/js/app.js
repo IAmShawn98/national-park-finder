@@ -117,7 +117,7 @@ function populateSearchResults() {
             $("<td>").text(nationalPark.url), 
             // User Actions:
             // Favorites button.
-            $("<td>").html('<i class="btn btn-success fa fa-star p-1 ml-5 text-white parkSelect" aria-hidden="true"><input type="button" class="btn favPark btn-success p-0" value=" Favorite This" id="parkDetails-'+nationalPark.parkCode+'"/>'),
+            $("<td>").html('<i class="btn btn-success fa fa-star p-1 ml-5 text-white parkSelect" aria-hidden="true"><input type="button" class="btn favPark btn-success p-0" value=" Favorite This" id="parkFavs-'+nationalPark.parkCode+'"/>'),
             // More Details button.
             $("<td>").html('<i class="btn btn-info fa fa-eye p-1 mr-5 text-white" aria-hidden="true"><input type="button" class="btn moreButton btn-info p-0" value=" More Details" id="parkDetails-'+nationalPark.parkCode+'"/>')
         );
@@ -161,10 +161,11 @@ $(document).on("click", ".moreButton", function (e) {
 
     for (var f = 0; f < nationalParks.length; f++) {
     if (splitValue[1] === nationalParks[f].parkCode) {
-        console.log("are you finding a park");
-        $("#").modal("show"); 
+        console.log("are you looking for more details");
+        console.log($("#parkDetails"));
+        $("#parkDetails").modal("show");
+        // $("#parkName").append(nationalParks[f].name);  
         console.log(nationalParks[f].name);
-        $("#favoritesPopulation").append(favRow); 
     }
 }
 
