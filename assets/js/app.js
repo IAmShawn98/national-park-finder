@@ -93,8 +93,8 @@ function parkFetcher() {
                         long,
                         url: currentPark.url,
                         parkCode:currentPark.parkCode, 
-                        description:currentPark.description,
-                        hours: standardHours, 
+                        // description:currentPark.description,
+                        // hours: standardHours, 
                     });
                 }
                 // Log Push.
@@ -117,36 +117,53 @@ function populateSearchResults() {
             $("<td>").text(nationalPark.url), 
             // User Actions:
             // Favorites button.
-            $("<td>").html('<i class="btn btn-success fa fa-star p-1 ml-5 text-white parkSelect" aria-hidden="true"><input type="button" class="btn btn-success p-0" value=" Favorite This" attr = "data-name" '+ nationalPark.parkCode +' " id = "parkSelect"/>'),
+            $("<td>").html('<i class="btn btn-success fa fa-star p-1 ml-5 text-white parkSelect" aria-hidden="true"><input type="button" class="btn favPark btn-success p-0" value=" Favorite This" id="parkDetails-'+nationalPark.parkCode+'"/>'),
             // More Details button.
-            $("<td>").html('<i class="btn btn-info fa fa-eye p-1 mr-5 text-white" aria-hidden="true"><input type="button" class="btn btn-info p-0" value=" More Details" id="parkDetails-'+nationalPark.parkCode+'"/>')
+            $("<td>").html('<i class="btn btn-info fa fa-eye p-1 mr-5 text-white" aria-hidden="true"><input type="button" class="btn moreButton btn-info p-0" value=" More Details" id="parkDetails-'+nationalPark.parkCode+'"/>')
         );
         // Append new rows to the table.
         $("#searchResults > tbody").append(newRow)
     })
 };
 
-$(document).on("click", "#parkSelect", function () {
+$(document).on("click", ".favPark", function (e) {
     // var attr = element.getAttribute(parkCode);
     // console.log(attr);  
-    console.log("click on park");
+    console.log("click on fav park");
+    console.log(e.target.id); 
     // retrieve the code 
-    // call the array to find the code  
+    var splitValue = e.target.id.split("-"); 
+    console.log(splitValue[1], " is split 1"); 
+    console.log(nationalParks,  "is parkcode"); 
+
+    for (var f = 0; f < nationalParks.length; f++) {
+    if (splitValue[1] === nationalParks[f].parkCode) {
+        console.log("are you finding a park");
+        var favRow = $("<tr>").append (
+            $("<td>").text(nationalParks[f].name), 
+        )
+        console.log(nationalParks[f].name);
+        $("#favoritesPopulation").append(favRow); 
+    }
+}
+    // call the array to find the code 
+
     // display the details of the park 
     // save the name of the park to FB 
 
 })
 
-// $(document).on("click", "#parkSelect", function () {
+$(document).on("click", ".moreButton", function (e) {
     // var attr = element.getAttribute(parkCode);
     // console.log(attr);  
-    // console.log("click on park");
-    // retrieve the code 
+    console.log("click on park");
+    console.log(e.target.id); 
+    // retrieve the code - split function
     // call the array to find the code  
     // display the details of the park 
     // save the name of the park to FB 
 
-// })
+})
 
 // listener for the favs section 
 
