@@ -129,13 +129,24 @@ function populateSearchResults() {
 $(document).on("click", "#parkSelect", function () {
     // var attr = element.getAttribute(parkCode);
     // console.log(attr);  
-    console.log("click on park")
+    console.log("click on park");
     // retrieve the code 
     // call the array to find the code  
     // display the details of the park 
     // save the name of the park to FB 
 
 })
+
+// $(document).on("click", "#parkSelect", function () {
+    // var attr = element.getAttribute(parkCode);
+    // console.log(attr);  
+    // console.log("click on park");
+    // retrieve the code 
+    // call the array to find the code  
+    // display the details of the park 
+    // save the name of the park to FB 
+
+// })
 
 // listener for the favs section 
 
