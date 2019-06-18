@@ -146,24 +146,30 @@ $(document).on("click", ".favPark", function (e) {
         $("#favoritesPopulation").append(favRow); 
     }
 }
-    // call the array to find the code 
-
-    // display the details of the park 
-    // save the name of the park to FB 
 
 })
 
 $(document).on("click", ".moreButton", function (e) {
     // var attr = element.getAttribute(parkCode);
     // console.log(attr);  
-    console.log("click on park");
+    console.log("click on more details");
     console.log(e.target.id); 
-    // retrieve the code - split function
-    // call the array to find the code  
-    // display the details of the park 
-    // save the name of the park to FB 
+    // retrieve the code 
+    var splitValue = e.target.id.split("-"); 
+    console.log(splitValue[1], " is split 1"); 
+    console.log(nationalParks,  "is parkcode"); 
+
+    for (var f = 0; f < nationalParks.length; f++) {
+    if (splitValue[1] === nationalParks[f].parkCode) {
+        console.log("are you finding a park");
+        $("#").modal("show"); 
+        console.log(nationalParks[f].name);
+        $("#favoritesPopulation").append(favRow); 
+    }
+}
 
 })
+
 
 // listener for the favs section 
 
